@@ -19,6 +19,7 @@ Rectangle {
         property bool p
         property bool paused
         volume: appSettings.volume
+        source: ''
         onPlaying: {
             p=true
             paused=false
@@ -79,7 +80,7 @@ Rectangle {
         anchors.horizontalCenter: seekSlider.horizontalCenter
         color: app.c4
         text: 'Modulo '+parseInt(app.mod+1)+' de '+app.cantmod+' Secciòn '+parseInt(app.s+1)+' de '+app.cants
-        visible:rb.opacity===1.0
+        visible:rb.opacity===1.0&&rb.visible
     }
     Rectangle{
         width: rb.width+app.fs
@@ -228,6 +229,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         y:rb.opacity===1.0?0:r.height-app.fs
         verFondo: true
+        visible: mediaPlayer.source!==''
         onClickSeek: {
             app.verAyuda=false
             trb.restart()
